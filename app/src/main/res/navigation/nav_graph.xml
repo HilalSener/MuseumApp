@@ -17,7 +17,9 @@
         android:id="@+id/artworkFragment"
         android:label="ArtworkFragment"
         android:name="com.hilal.museumapp.features.artwork.ArtworkFragment">
-
+        <argument
+            android:name="identifier"
+            app:argType="string" />
     </fragment>
 
 </navigation>
