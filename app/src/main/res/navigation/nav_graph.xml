@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/collectionFragment">
+
+    <fragment
+        android:id="@+id/collectionFragment"
+        android:label="CollectionFragment"
+        android:name="com.hilal.museumapp.features.collection.CollectionFragment">
+        <action
+            android:id="@+id/action_collectionFragment_to_artworkFragment"
+            app:destination="@id/artworkFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/artworkFragment"
+        android:label="ArtworkFragment"
+        android:name="com.hilal.museumapp.features.artwork.ArtworkFragment">
+
+    </fragment>
+
+</navigation>
