@@ -1,4 +1,4 @@
-package com.hilal.museumapp.models
+package com.hilal.museumapp.domain.models
 
 data class Artwork(
     val identifier: String,
