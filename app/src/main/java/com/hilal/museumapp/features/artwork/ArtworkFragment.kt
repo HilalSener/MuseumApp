@@ -1,18 +1,16 @@
-package com.hilal.museumapp.features.collection
+package com.hilal.museumapp.features.artwork
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.hilal.museumapp.R
-import dagger.hilt.android.AndroidEntryPoint
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.hilal.museumapp.R
 
-@AndroidEntryPoint
-class CollectionFragment : Fragment() {
+class ArtworkFragment : Fragment() {
 
-    private val viewModel: CollectionViewModel by viewModels()
+    private val viewModel: ArtworkViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
