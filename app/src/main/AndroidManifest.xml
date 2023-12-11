@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hilal.museumapp">
 
+    <!-- Add internet permission -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.hilal.museumapp.MuseumApplication"
         android:allowBackup="true"
