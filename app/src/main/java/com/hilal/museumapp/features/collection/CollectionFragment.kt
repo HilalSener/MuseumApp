@@ -1,23 +1,27 @@
 package com.hilal.museumapp.features.collection
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.hilal.museumapp.R
+import androidx.compose.runtime.Composable
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.hilal.museumapp.domain.models.CollectionEntry
+import com.hilal.museumapp.features.BaseComposableFragment
 
 @AndroidEntryPoint
-class CollectionFragment : Fragment() {
+class CollectionFragment : BaseComposableFragment() {
 
     private val viewModel: CollectionViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_collection, container, false)
+    @Composable
+    override fun ComposeContent() {
+        val collectionItem = viewModel.collectionItemPagingDataFlow.collectAsLazyPagingItems()
+
+        CollectionScreen(collectionItems = collectionItem, onItemClick = ::navigateToArtWork)
+    }
+
+    private fun navigateToArtWork(collectionEntry: CollectionEntry) {
+        findNavController()
+            .navigate(CollectionFragmentDirections.actionCollectionFragmentToArtworkFragment(collectionEntry.identifier))
     }
 }
