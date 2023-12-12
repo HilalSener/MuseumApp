@@ -17,6 +17,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.itemsIndexed
 import com.hilal.museumapp.domain.models.CollectionEntry
 import com.hilal.museumapp.features.compose.components.CollectionEntryView
+import com.hilal.museumapp.features.compose.components.LoadingIndicator
 
 @Composable
 fun CollectionScreen(
@@ -25,7 +26,7 @@ fun CollectionScreen(
 ) {
     when (collectionItems.loadState.refresh) {
         LoadState.Loading -> {
-            // TODO: Implement loading state
+            LoadingIndicator()
         }
         is LoadState.Error -> {
             // TODO: Implement error state
