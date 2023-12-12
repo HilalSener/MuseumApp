@@ -1,21 +1,27 @@
 package com.hilal.museumapp.features.artwork
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.fragment.app.viewModels
-import com.hilal.museumapp.R
+import com.hilal.museumapp.features.BaseComposableFragment
+import com.hilal.museumapp.utils.Loaded
+import dagger.hilt.android.AndroidEntryPoint
 
-class ArtworkFragment : Fragment() {
+@AndroidEntryPoint
+class ArtworkFragment : BaseComposableFragment() {
 
     private val viewModel: ArtworkViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_collection, container, false)
+    @Composable
+    override fun ComposeContent() {
+        val uiState by viewModel.uiStateStateFlow.collectAsState()
+
+        when (uiState) {
+            is Loaded -> ArtworkScreen(item = (uiState as Loaded).value)
+            else -> {
+                // TODO: handle other states
+            }
+        }
     }
 }
